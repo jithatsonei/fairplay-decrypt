@@ -1,0 +1,27 @@
+name: Build Credential Retrieve
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # Allows manual runs from the Actions tab
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Makefile
+        working-directory: ./credential-retreival
+        run: make
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: credential-retreival-build
+          path: credential-retreival/build/
+          if-no-files-found: error
