@@ -16,12 +16,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Makefile
-        working-directory: ./credential-retreival
+        working-directory: credential-retrieval
         run: make
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: credential-retreival-build
-          path: credential-retreival/build/
+          name: credential-retrieval-build
+          path: credential-retrieval/build/
           if-no-files-found: error
